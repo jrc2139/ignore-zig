@@ -1,6 +1,6 @@
 id: 60dqdmdllhijhwb7dmjpq3da8mrl2obe0y714zl0t7r97i7k
 name: ignore-zig
 main: src/lib.zig
-license: mit
+license: MIT
 description: git ignore parser
 dependencies:

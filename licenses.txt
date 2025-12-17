@@ -1,2 +1,2 @@
-mit:
+MIT:
 - This
