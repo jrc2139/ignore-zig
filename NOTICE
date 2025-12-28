@@ -1,0 +1,8 @@
+ignore-zig - Gitignore pattern matching for Zig
+Copyright (C) 2025 jrc2139
+
+This project is a Zig implementation inspired by:
+
+node-ignore (https://github.com/kaelzhang/node-ignore)
+Copyright (c) Kael Zhang
+Licensed under MIT License
