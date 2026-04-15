@@ -119,7 +119,7 @@ pub const Compiler = struct {
     /// Parse pattern body into segments (split by /)
     fn parseSegments(self: *Compiler, alloc: std.mem.Allocator, body: []const u8) ![]const Segment {
         _ = self;
-        var segments = std.ArrayListUnmanaged(Segment){};
+        var segments = std.ArrayListUnmanaged(Segment).empty;
 
         var it = std.mem.splitScalar(u8, body, '/');
         while (it.next()) |part| {
@@ -207,8 +207,8 @@ fn processTrailingSpaces(line: []const u8) []const u8 {
 
 /// Parse a segment into elements
 fn parseElements(alloc: std.mem.Allocator, segment: []const u8) ![]const Element {
-    var elements = std.ArrayListUnmanaged(Element){};
-    var literal_buf = std.ArrayListUnmanaged(u8){};
+    var elements = std.ArrayListUnmanaged(Element).empty;
+    var literal_buf = std.ArrayListUnmanaged(u8).empty;
 
     var i: usize = 0;
     while (i < segment.len) {
@@ -303,9 +303,9 @@ fn parseCharClass(alloc: std.mem.Allocator, input: []const u8) !CharClassResult 
         i += 1;
     }
 
-    var chars = std.ArrayListUnmanaged(u8){};
+    var chars = std.ArrayListUnmanaged(u8).empty;
     errdefer chars.deinit(alloc);
-    var ranges = std.ArrayListUnmanaged(CharClass.Range){};
+    var ranges = std.ArrayListUnmanaged(CharClass.Range).empty;
     errdefer ranges.deinit(alloc);
 
     // Special case: ] as first character is literal
