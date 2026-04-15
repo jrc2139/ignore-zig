@@ -95,7 +95,7 @@ pub const Ignore = struct {
         return .{
             .arena = std.heap.ArenaAllocator.init(backing_allocator),
             .patterns = &.{},
-            .literal_map = .{},
+            .literal_map = .empty,
             .options = options,
             .stats = .{},
         };
@@ -347,7 +347,7 @@ pub const Ignore = struct {
     fn compileSegments(self: *Ignore, line: []const u8, alloc: std.mem.Allocator) ![]const Segment {
         _ = self;
 
-        var segments = std.ArrayListUnmanaged(Segment){};
+        var segments = std.ArrayListUnmanaged(Segment).empty;
 
         var parts = std.mem.splitScalar(u8, line, '/');
         while (parts.next()) |part| {
@@ -416,7 +416,7 @@ fn toLowerAlloc(alloc: std.mem.Allocator, s: []const u8) ![]const u8 {
 
 /// Compile elements from a segment string
 fn compileElements(part: []const u8, alloc: std.mem.Allocator) ![]const Element {
-    var elements = std.ArrayListUnmanaged(Element){};
+    var elements = std.ArrayListUnmanaged(Element).empty;
     var i: usize = 0;
 
     while (i < part.len) {
@@ -473,8 +473,8 @@ fn parseCharClass(s: []const u8, alloc: std.mem.Allocator) !CharClassResult {
         i += 1;
     }
 
-    var chars = std.ArrayListUnmanaged(u8){};
-    var ranges = std.ArrayListUnmanaged(CharClass.Range){};
+    var chars = std.ArrayListUnmanaged(u8).empty;
+    var ranges = std.ArrayListUnmanaged(CharClass.Range).empty;
 
     while (i < s.len and s[i] != ']') {
         const c = s[i];
