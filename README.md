@@ -18,7 +18,7 @@ High-performance gitignore pattern matching library for Zig, compatible with nod
 
 ## Requirements
 
-- Zig 0.15.0 or later
+- Zig 0.16.0
 
 ## Installation
 
@@ -202,4 +202,4 @@ The library is optimized for:
 
 ## License
 
-MIT
+Apache 2.0
